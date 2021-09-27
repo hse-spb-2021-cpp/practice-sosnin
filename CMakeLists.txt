@@ -21,3 +21,5 @@ else()
 endif (MSVC)
 
 add_executable(lab01_01 lab01-examples/210913.cpp)
+
+add_executable(lab02_01 lab02-examples/210927.cpp)
