@@ -1,0 +1,1 @@
+g++ -std=c++17 -I ../lab05-examples ../lab05-examples/211004.cpp ../lab05-examples/lib.cpp -o lab05_01

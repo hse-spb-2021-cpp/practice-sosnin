@@ -20,6 +20,10 @@ else()
     endif (UNIX AND NOT CMAKE_CXX_FLAGS)
 endif (MSVC)
 
-add_executable(lab01_01 lab01-examples/210913.cpp)
+add_executable(lab02_01 lab02-examples/210913.cpp)
 
-add_executable(lab02_01 lab02-examples/210927.cpp)
+add_executable(lab04_01 lab04-examples/210927.cpp)
+
+add_executable(lab05_01 lab05-examples/211004.cpp lab05-examples/lib.cpp)
+target_include_directories(lab05_01 PRIVATE lab05-examples)
+
