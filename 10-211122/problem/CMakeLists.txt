@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.5)
 project(ex-10)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
+
 include(conan.cmake)
 
 conan_cmake_run(
@@ -11,6 +13,7 @@ conan_cmake_run(
     UPDATE
     OPTIONS
         boost:shared=True
+        boost:fPIC=True
     BUILD
         missing
     GENERATORS
