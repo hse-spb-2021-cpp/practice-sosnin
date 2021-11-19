@@ -1,0 +1,42 @@
+cmake_minimum_required(VERSION 3.5)
+project(ex-10)
+
+include(conan.cmake)
+
+conan_cmake_run(
+    REQUIRES
+        boost/1.71.0
+    BASIC_SETUP
+    CMAKE_TARGETS
+    UPDATE
+    OPTIONS
+        boost:shared=True
+    BUILD
+        missing
+    GENERATORS
+        cmake_paths
+        cmake_find_package
+    )
+
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH};${CMAKE_CURRENT_BINARY_DIR})
+
+find_package(boost COMPONENTS filesystem REQUIRED)
+
+include_directories(
+    ${CONAN_INCLUDE_DIRS}
+    ./20-boost-dll-has
+    ./03-boost-dll
+    )
+
+add_executable(01-boost-header-only
+    01-boost-header-only.cpp
+    )
+
+add_executable(02-boost-link-filesystem
+    02-boost-link-filesystem.cpp
+    )
+
+target_link_libraries(02-boost-link-filesystem
+    PRIVATE
+        Boost::filesystem
+    )
