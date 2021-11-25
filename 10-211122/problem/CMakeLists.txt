@@ -1,7 +1,10 @@
 cmake_minimum_required(VERSION 3.5)
 project(ex-10)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -Wall -Wextra")
 
 include(conan.cmake)
 
@@ -43,3 +46,11 @@ target_link_libraries(02-boost-link-filesystem
     PRIVATE
         Boost::filesystem
     )
+
+add_executable(example-01
+    ../examples/01.cpp
+)
+
+add_executable(example-02
+    ../examples/02.cpp
+)
