@@ -26,7 +26,9 @@ conan_cmake_run(
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH};${CMAKE_CURRENT_BINARY_DIR})
 
-find_package(boost COMPONENTS filesystem REQUIRED)
+find_package(Boost 1.71 REQUIRED filesystem) # Required by Boost.DLL
+include_directories(${Boost_INCLUDE_DIRS})
+link_directories(${Boost_LIBRARY_DIRS})
 
 include_directories(
     ${CONAN_INCLUDE_DIRS}
@@ -45,6 +47,24 @@ add_executable(02-boost-link-filesystem
 target_link_libraries(02-boost-link-filesystem
     PRIVATE
         Boost::filesystem
+    )
+
+add_library(liba SHARED
+    ./03-boost-dll/plugin_a.cpp
+    )
+
+add_library(libb SHARED
+    ./03-boost-dll/plugin_b.cpp
+    )
+
+add_executable(03-boost-dll
+    ./03-boost-dll/main.cpp
+    )
+
+target_link_libraries(03-boost-dll
+    PRIVATE
+        Boost::filesystem
+        ${CMAKE_DL_LIBS}
     )
 
 add_executable(example-01
