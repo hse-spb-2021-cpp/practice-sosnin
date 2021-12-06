@@ -27,3 +27,5 @@ add_executable(lab04_01 lab04-examples/210927.cpp)
 add_executable(lab05_01 lab05-examples/211004.cpp lab05-examples/lib.cpp)
 target_include_directories(lab05_01 PRIVATE lab05-examples)
 
+add_executable(lambda 12-211206/lambda.cpp)
+
